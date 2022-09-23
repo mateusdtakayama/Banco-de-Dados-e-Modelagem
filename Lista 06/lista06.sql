@@ -72,36 +72,86 @@ insert into livro values
 SELECT LIVRO.TITULO, EDITORA.NOME, EDITORA.TELEFONE FROM LIVRO, EDITORA
 	WHERE LIVRO.ID_EDITORA = EDITORA.ID_EDITORA;
     
-## EXERCÍCIO 01
+SELECT nome FROM estilo
+ORDER BY nome;
 
-select nome from estilo order by nome asc;
+SELECT nome FROM autor 
+ORDER BY nome DESC;
 
-## EXERCÍCIO 02
+SELECT nome, telefone FROM editora
+ORDER BY nome;
 
-select nome from autor order by nome desc;
+SELECT nome FROM editora;
 
-## EXERCÍCIO 03
+SELECT nome FROM estilo
+ORDER BY nome DESC;
 
-select nome, telefone from editora;
+SELECT nome FROM estilo
+WHERE id_estilo = '3';
 
-## EXERCÍCIO 04
+SELECT nome FROM autor
+WHERE id_autor = '1';
 
-select nome from editora;   
+SELECT nome FROM editora
+WHERE id_editora = '4';
 
-## EXERCÍCIO 05
+SELECT livro.titulo, editora.nome FROM livro, editora
+WHERE editora.id_editora = livro.id_editora;
 
-select nome from estilo order by nome desc;
+SELECT livro.titulo, editora.nome FROM livro, editora
+WHERE editora.id_editora = livro.id_editora AND editora.nome LIKE 'a%';
 
-## EXERCÍCIO 06
+SELECT livro.titulo, editora.nome, estilo.nome, autor.nome FROM livro, editora, estilo, autor
+WHERE editora.id_editora = livro.id_editora AND
+estilo.id_estilo = livro.id_estilo AND
+autor.id_autor = livro.id_autor;
 
-select nome from estilo where id_estilo = 3;
+SELECT livro.titulo, editora.nome
+FROM livro, editora
+WHERE editora.id_editora = livro.id_editora 
+AND editora.telefone LIKE '12345';
 
-## EXERCÍCIO 07
+SELECT livro.titulo, autor.nome
+FROM livro, autor
+WHERE autor.id_autor = livro.id_autor
+AND autor.idade LIKE '35';
 
-select nome from autor where id_autor = 1;
+SELECT livro.titulo, autor.nome, editora.nome
+FROM livro, autor, editora
+WHERE autor.id_autor = livro.id_autor AND
+editora.id_editora = livro.id_editora
+AND autor.nome LIKE 'Dan Brown';
 
-## EXERCÍCIO 08
+SELECT livro.titulo, autor.nome, editora.nome, autor.idade
+FROM livro, autor, editora
+WHERE autor.id_autor = livro.id_autor
+AND editora.id_editora = livro.id_editora
+AND autor.nome LIKE 'Dan Brown' 
+AND autor.idade LIKE '35'; 
 
-select nome from editora where id_editora = 4;
+
+SELECT livro.titulo, editora.nome, autor.nome
+FROM livro, editora, autor
+WHERE editora.id_editora = livro.id_editora
+AND autor.id_autor = livro.id_autor
+AND autor.nome like 'Dan Brown'
+AND editora.telefone like '123345';
 
 
+SELECT livro.titulo, estilo.nome
+FROM livro, estilo
+WHERE estilo.id_estilo = livro.id_estilo
+AND estilo.nome LIKE 'romance';
+
+
+SELECT livro.titulo, estilo.nome
+FROM livro, estilo, editora
+WHERE estilo.id_estilo = livro.id_estilo
+AND editora.id_editora = livro.id_editora
+AND editora.nome LIKE 'Globo';
+
+
+SELECT livro.titulo, autor.nome, editora.nome
+FROM livro, autor, editora
+WHERE editora.id_editora = livro.id_livro
+AND autor.id_autor = livro.id_autor;
